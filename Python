@@ -1,0 +1,19 @@
+import requests
+
+def generate_text(prompt):
+    api_key = 'your_api_key_here'
+    headers = {
+        'Authorization': f'Bearer {api_key}',
+        'Content-Type': 'application/json'
+    }
+    data = {
+        'model': 'text-davinci-003',
+        'prompt': prompt,
+        'max_tokens': 100
+    }
+    response = requests.post('https://api.openai.com/v1/completions', headers=headers, json=data)
+    return response.json()
+
+prompt = "Напишите текст о пользе программирования"
+result = generate_text(prompt)
+print(result)
